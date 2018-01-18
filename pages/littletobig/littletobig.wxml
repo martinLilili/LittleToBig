@@ -1,0 +1,6 @@
+<!--pages/littletobig/littletobig.wxml-->
+<view class="container">
+  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="log">
+    <button id="{{idx}}" bindtap="clickednum">{{log}}</button>
+  </view>
+</view>
