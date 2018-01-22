@@ -1,6 +1,11 @@
 <!--pages/littletobig/littletobig.wxml-->
-<view class="container">
-  <view wx:for="{{array}}" wx:for-index="idx" wx:for-item="log">
-    <button id="{{idx}}" bindtap="clickednum">{{log}}</button>
+<view class="view2">
+  <view class="view1">
+    <text class="second">{{second}}</text>
+    <text class="score">得分：{{score}}</text>
   </view>
+  <view wx:if="{{!isover}}" wx:for="{{objects}}" wx:for-index="idx" wx:for-item="item">
+    <button class="{{item.ishide?'view_hide':'view_show'}}" style="position:absolute;left:{{item.left}}px;top:{{item.top}}px;" id="{{idx}}" bindtap="clickednum">{{item.num}}</button>
+  </view>
+  <button wx:if="{{isover}}" class="button" bindtap="restartgame">重新开始</button>  
 </view>
