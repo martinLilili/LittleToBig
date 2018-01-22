@@ -36,7 +36,11 @@ Page({
     blocknum: 4,
     score: 0,
     second: 30,
-    isover: false
+    isover: false,
+    timeanimation:'',
+    timechange:'',
+    scoreanimation:'',
+    scorechange:'',
   },
 
   
@@ -117,21 +121,52 @@ Page({
       item.ishide = true
       this.data.taptime ++
       this.data.score += 10 * this.data.level
+      this.data.changescore = 10 * this.data.level
+      
+      var scoreanimation = wx.createAnimation({
+        transformOrigin: "50%,50%",
+        duration:200,
+        timingFunction:"ease_in",
+      })
+      scoreanimation.opacity(1).step().opacity(0).step()
       this.setData({
         objects: this.data.objects,
         score: this.data.score,
+        scorechange: 10 * this.data.level,
+        scoreanimation: scoreanimation.export(),        
       })
       console.log(String(this.data.taptime))
       if (this.data.taptime == this.data.blocknum) {
-        this.data.second += parseInt(this.data.taptime/2)
+        var timeadd = parseInt(this.data.taptime / 2)
+        this.data.second += timeadd
         this.data.taptime = 0
+        var timeanimation = wx.createAnimation({
+          transformOrigin: "50%,50%",
+          duration: 200,
+          timingFunction: "ease_in",
+        })
+        timeanimation.opacity(1).step().opacity(0).step()
+        this.setData({
+          second: this.data.second,
+          timechange: "+" + timeadd,
+          timeanimation: timeanimation.export(),  
+        })
         clearTimeout(timer);
         this.data.level += 1
         this.randomdata()
       }
     } else {
       this.data.second -= 2
+      var timeanimation = wx.createAnimation({
+        transformOrigin: "50%,50%",
+        duration: 200,
+        timingFunction: "ease_in",
+      })
+      timeanimation.opacity(1).step().opacity(0).step()
       this.setData({
+        second: this.data.second,
+        timechange: "-2",
+        timeanimation: timeanimation.export(),
         second: this.data.second,
       })
       wx:wx.vibrateLong({

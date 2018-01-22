@@ -2,6 +2,8 @@
 <view class="view2">
   <view class="view1">
     <text class="second">{{second}}</text>
+    <text animation="{{timeanimation}}" class="changetime">{{timechange}}</text>
+    <text animation="{{scoreanimation}}" class="changescore">+{{scorechange}}</text>
     <text class="score">得分：{{score}}</text>
   </view>
   <view wx:if="{{!isover}}" wx:for="{{objects}}" wx:for-index="idx" wx:for-item="item">

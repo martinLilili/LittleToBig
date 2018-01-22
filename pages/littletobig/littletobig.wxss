@@ -15,6 +15,7 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  /* justify-content: space-between; */
 }
 
 .view2{
@@ -36,6 +37,21 @@
     margin-top: 10px;
     margin-right: 10px
 }
+
+.changescore{
+    position: absolute;
+		right: 0%;
+    margin-top: 30px;
+    margin-right: 10px;
+    opacity: 0; 
+}
+
+.changetime{
+    margin-top: 30px;
+    margin-left: -20px;
+    opacity: 0; 
+}
+
 .button {
   align-items: center;
   margin-top: 350px;
